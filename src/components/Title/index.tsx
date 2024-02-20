@@ -1,9 +1,9 @@
 import { View,Text,StyleSheet } from "react-native";
 import React from 'react';
 
-const Title = () => {
+const Title = ({text}) => {
     return(
-        <Text style={style.welcome}>Welcome</Text>
+        <Text style={style.welcome}>{text}</Text>
     )
 }
 const style = StyleSheet.create({
