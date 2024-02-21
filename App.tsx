@@ -4,6 +4,8 @@ import axios from 'axios';
 import Title from './src/components/Title';
 import Input from './src/components/Input';
 import Button from './src/components/Button';
+import UserList from './src/components/UserList';
+
 const App = () => {
   const [userData, setUserData] = useState(null);
   const [name, setName] = useState('');
@@ -11,29 +13,7 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://jsonplaceholder.typicode.com/users');
-          const filteredData = response.data.map(item => ({
-            name: item.name,
-            username: item.username,
-            email: item.email,
-            address: item.address,
-            phone: item.phone
-          }))
-        setUserData(filteredData);
-      } catch (error) {
-        console.error('error fetching', error);
-      }
-    };
-
-    fetchData();
-    return () => {};
-  }, []);
-
+  
   const handleRegister = () => {
     console.log('Name:', name);
     console.log('Username:', username);
@@ -43,21 +23,6 @@ const App = () => {
   };
   return (
     <ScrollView>
-
-      {userData && (
-        <View>
-          {/* <Text>Data JSON:</Text> */}
-          {userData.map((user, index) => (
-            <View key={index} style={style.userContainer}>
-              <Text style={style.label}>Name: {user.name}</Text>
-              <Text>Username: {user.username}</Text>
-              <Text>Email: {user.email}</Text>
-              <Text>Address: {JSON.stringify(user.address)}</Text>
-              <Text>Phone: {user.phone}</Text>
-            </View>
-          ))}
-        </View>
-      )}
 
       <Title text="Register" />
       <Input
@@ -87,6 +52,7 @@ const App = () => {
         onChangeText={setPhoneNumber}
       />
       <Button onPress={handleRegister} />
+    <UserList/>
     </ScrollView>
   );
 };
