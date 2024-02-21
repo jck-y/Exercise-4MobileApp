@@ -30,14 +30,14 @@ const UserList = () => {
       <Text style={style.welcome}>User List</Text>
 
       {userData && (
-        <View>
+        <View style={{marginBottom:55}}>
           {userData.map((user, index) => (
             <View key={index} style={style.userContainer}>
-              <Text style={style.label}>Name: {user.name}</Text>
-              <Text>Username: {user.username}</Text>
-              <Text>Email: {user.email}</Text>
-              <Text>Address: {JSON.stringify(user.address)}</Text>
-              <Text>Phone: {user.phone}</Text>
+              <Text style={style.label}>Name: <Text style={style.txt}>{user.name}</Text></Text>
+              <Text style={style.label}>Username: <Text style={style.txt}>{user.username}</Text></Text>
+              <Text style={style.label}>Email: <Text style={style.txt}>{user.email}</Text></Text>
+              <Text style={style.label}>Address: <Text style={style.txt}>{(user.address.street + ', ' + user.address.suite + ', ' + user.address.city + ', ' + user.address.zipcode)}</Text></Text>
+              <Text style={style.label}>Phone: <Text style={style.txt}>{user.phone}</Text></Text>
             </View>
           ))}
         </View>
@@ -50,7 +50,7 @@ const style = StyleSheet.create({
   welcome: {
     marginTop: 50,
     marginLeft: 20,
-    marginBottom: 30,
+    marginBottom: 20,
     fontSize: 50,
     fontWeight: 'bold',
     color: 'black',
@@ -58,11 +58,21 @@ const style = StyleSheet.create({
   userContainer: {
     marginBottom: 20,
     padding: 10,
-    backgroundColor: '#f0f0f0',
+    borderRadius: 20,
+    borderColor: 'grey',
+    borderWidth: 1,
+    marginLeft: 15,
+    marginRight: 15,
   },
   label: {
     fontWeight: 'bold',
+    marginBottom: 3,
+    color: 'black',
   },
+  txt : {
+    fontWeight:'normal',
+    color: 'black',
+  }
 });
 
 export default UserList;
