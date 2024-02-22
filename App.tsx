@@ -1,10 +1,8 @@
-import {ScrollView, View, Text, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import {ScrollView, View, Text, StyleSheet} from 'react-native';
 import axios from 'axios';
-import Title from './src/components/Title';
-import Input from './src/components/Input';
-import Button from './src/components/Button';
 import UserList from './src/components/UserList';
+import {Title, Input, Button} from './src/components/Registration/index';
 
 const App = () => {
   const [userData, setUserData] = useState(null);
@@ -23,47 +21,37 @@ const App = () => {
   };
   return (
     <ScrollView>
-
-      <Title text="Register" />
+      <Title text="Registration" />
       <Input
         text="Name"
-        placeholder="Masukan nama anda"
+        placeholder=" Masukan nama anda"
         onChangeText={setName}
       />
       <Input
         text="Username"
-        placeholder="Masukan username anda"
+        placeholder=" Masukan username anda"
         onChangeText={setUsername}
       />
       <Input
         text="Email"
-        placeholder="Masukan email anda"
+        placeholder=" Masukan email anda"
         onChangeText={setEmail}
       />
       <Input
         text="Address"
-        placeholder="Masukan address anda"
+        placeholder=" Masukan address anda"
         onChangeText={setAddress}
       />
       <Input
         keyboardType="numeric"
         text="Phone Number"
-        placeholder="Masukan nomor telepon anda"
+        placeholder=" Masukan nomor telepon anda"
         onChangeText={setPhoneNumber}
       />
       <Button onPress={handleRegister} />
-    <UserList/>
+    {/* <UserList/> */}
     </ScrollView>
   );
 };
-const style = StyleSheet.create({
-  userContainer: {
-    flex: 1,
-    padding: 20,
-  },
-    label: {
-        fontWeight: 'bold',
-        color:'black',
-      },
-    });
+
 export default App;
